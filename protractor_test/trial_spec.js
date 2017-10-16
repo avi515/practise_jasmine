@@ -9,8 +9,9 @@ describe('Protractor Demo App', function() {
   });
   it('Enter First attribute', function() {
 	  var fir = element(by.model("first"));
-	  fir.sendKeys("5");
+	  fir.sendKeys("6");
 	  browser.sleep(2000)
+	  //Clear value 6 to 8 here
 	  fir.clear();
 	  browser.sleep(2000);
 	  fir.sendKeys("8");
