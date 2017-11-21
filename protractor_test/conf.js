@@ -14,7 +14,7 @@ chromeOptions: {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   // Spec patterns are relative to the current working directory when
   // protractor is called.
-  specs: ['trial_spec.js'],
+  specs: ['multiform_spec.js'],
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
