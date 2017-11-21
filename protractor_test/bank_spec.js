@@ -1,38 +1,50 @@
-// Bank validation Spec
-describe('Bank operation check', function()	{
-	it('Open bank Homepage', function()	{
-		browser.get('http://www.way2automation.com/angularjs-protractor/banking/#/login');
-		browser.sleep(1000)
-		console.log('Page opened')
-		expect(browser.getTitle()).toEqual('Protractor practice website - Banking App');	
+// Bank Manager Spec
+describe('Bank Manager Operations', function()			{
+	it('Bank Manager View', function()		{
+		// Open Browser window
+		browser.get("http://www.way2automation.com/angularjs-protractor/banking/#/login");
+		browser.driver.manage().window().maximize();
+		console.log('Webpage opened')
+		expect(browser.getTitle()).toEqual('Protractor practice website - Banking App');		
 	});
 	
-	it('Click on Customer Login', function()	{
-		element(by.buttonText('Customer Login')).click();
-		console.log('Customer login')
-		expect(browser.getCurrentUrl()).toEqual('http://www.way2automation.com/angularjs-protractor/banking/#/customer');	
+	it('Open Bank Manager View', function()		{
+		// Click on Bank Manager button
+		element(by.buttonText('Bank Manager Login')).click();
+		browser.sleep(2000)
+		//Opens Bank Manager view
+		console.log('Opened Bank Manager Page')
+		expect(browser.getCurrentUrl()).toEqual("http://www.way2automation.com/angularjs-protractor/banking/#/manager");
+		
 	});
 	
-	it('Select Customer', function()	{	
-		
-		element(by.model("custId")).$('[value="2"]').click();
+	it('Add a new Customer', function()		{
+		//Click on Add Customer button
+		element(by.buttonText("Add Customer")).click();
 		browser.sleep(2000)
-		console.log('select Harry Potter')
-		element(by.buttonText('Login')).click();
-		browser.sleep(2000)
-		//expect(element(by.className('fontBig ng-binding'))).toEqual('Harry Potter');
-	});
-		
-	it('Check Transactions', function()		{
-		console.log('deposit amount')
-		element(by.buttonText("Deposit")).click();
+		// Enter Firstname
+		element(by.model('fName')).sendKeys("Avinash");
 		browser.sleep(1000)
-		console.log('enter 150 as deposit')
-		element(by.model('amount')).sendKeys("150");
+		// Enter Lastname
+		element(by.model('lName')).sendKeys("Dingari");
+		browser.sleep(1000)
+		// Enter Postcode
+		element(by.model('postCd')).sendKeys("500019");
+		browser.sleep(1000)
+		// click button and Add Customer
+		element(by.className('btn btn-default')).submit();
 		browser.sleep(2000)
-		element(by.className("btn btn-default")).click();
+		// Click Ok on Alert
+		browser.switchTo().alert().accept();
 		
-	});	
+	});
+	
+	it('Customer List', function()		{
+		//Check the Customer newly added
+		element(by.buttonText("Customers")).click();
+		browser.sleep(5000)
+		//	
+	});
+	
 
 });
-
